@@ -13,7 +13,7 @@ datasource db {
 }
 
 enum Role{
-  DOCTORE
+  DOCTOR
   RECEPTIONIST
   ADMIN
 }
@@ -32,21 +32,21 @@ model User{
   id              String    @id @default(cuid())
   name            String
   email           String    @unique
-  PasswordHash    String 
+  passwordHash    String 
   role            Role
-  CreatedAt       DateTime  @default(now())
+  createdAt       DateTime  @default(now())
   visitsCreated  Visit[]    @relation("CreatedBy")
   visitsAsDoctor Visit[]    @relation("Doctor")
 }
 
 model Patient{
   id String @id @default(cuid())
-  FirstName String 
-  LastName String
-  DateOfBirth DateTime
+  firstName String 
+  lastName String
+  dateOfBirth DateTime
   sex Sex
-  Phone String?
-  Address String?
+  phone String?
+  address String?
   cin String? @unique
   createdAt DateTime @default(now())
   visits Visit[]
